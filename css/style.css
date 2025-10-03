@@ -1,0 +1,608 @@
+:root{
+  --brand-start: #667eea;
+  --brand-end: #764ba2;
+  --accent-color: #f093fb;
+  --text-primary: #2d3748;
+  --text-muted: #718096;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7fafc;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --gradient-primary: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  --gradient-accent: linear-gradient(135deg, var(--accent-color), #f5576c);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Page background */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+}
+
+/* Spacing helpers */
+.section-padding{ 
+  padding: 100px 0; 
+}
+
+.section-title{ 
+  font-weight: 800; 
+  margin-bottom: 1rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+}
+
+/* Main content background */
+main {
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero with enhanced gradient background */
+.site-header .hero{
+  min-height: 70vh;
+  background: linear-gradient(135deg, var(--accent-color), var(--brand-end), var(--brand-start));
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+.site-header .hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(240, 147, 251, 0.1), rgba(118, 75, 162, 0.1), rgba(102, 126, 234, 0.1));
+  z-index: 1;
+}
+
+.site-header .hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero content styling */
+.hero-content {
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-image-container {
+  animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+.hero-profile-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hero-profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero .lead {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 1s ease-out 0.4s both;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+.hero .lead strong {
+  font-size: 2.2rem;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 0;
+}
+
+.hero-title-line {
+  font-size: 1.8rem;
+  font-weight: 400;
+  display: block;
+  margin-top: 0.1rem;
+}
+
+.hero .btn {
+  animation: fadeInUp 1s ease-out 0.6s both;
+  padding: 15px 30px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced Navbar */
+.navbar{ 
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-link{ 
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navbar .nav-link:hover, .navbar .nav-link:focus{
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.navbar .nav-link.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Enhanced About section */
+.about-section {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.profile-photo{
+  width: 250px; 
+  height: 250px; 
+  object-fit: cover;
+  border: 8px solid #fff; 
+  outline: 4px solid var(--brand-start);
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+}
+
+/* Enhanced Portfolio section */
+.portfolio-section {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.portfolio-card { 
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.portfolio-card img{ 
+  transition: all 0.3s ease;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.portfolio-card:hover img{
+  transform: scale(1.1);
+}
+
+/* Enhanced Footer */
+.site-footer{ 
+  background: var(--gradient-primary);
+  margin-top: 4rem;
+}
+
+/* Skills Section */
+.skills-section {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.skill-item {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brand-start);
+}
+
+.skill-icon {
+  font-size: 3rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+/* Education Section */
+.education-section {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.education-item {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  border-left: 5px solid var(--brand-start);
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===== Hobbies image-cards ===== */
+.hobby-grid { margin-top: .25rem; }
+
+.hobby-card {
+  --radius: 18px;
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-image: var(--bg);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.12);
+  transform: translateZ(0);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.hobby-card::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.45), rgba(0,0,0,.15) 60%, rgba(0,0,0,0));
+}
+
+.hobby-card span {
+  position: absolute;
+  left: 12px;
+  bottom: 10px;
+  z-index: 1;
+  display: inline-block;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  font-size: .95rem;
+  color: #fff;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(2px);
+}
+
+.hobby-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 .75rem 1.5rem rgba(0,0,0,.18);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hobby-card { transition: none; }
+}
+
+/* Small screens */
+@media (max-width: 576px){
+  .section-padding{ padding: 56px 0; }
+  .display-4{ font-size: 2.2rem; }
+  .profile-photo{ width: 160px; height:160px; }
+}
+
+
+/* Enhanced Buttons */
+.btn-primary {
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--gradient-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline-light {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Contact Form Enhancement */
+.contact-section {
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: var(--shadow-md);
+}
+
+.form-control {
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--brand-start);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* Services Cards Enhancement */
+.service-card {
+  background: var(--bg-primary);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  height: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--brand-start);
+}
+
+.service-icon {
+  font-size: 3rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Portfolio overlay */
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(102, 126, 234, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-overlay i {
+  color: white;
+  font-size: 3rem;
+}
+
+/* Contact icons */
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* Social links */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.social-link:hover {
+  background: var(--gradient-primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Badge styling */
+.badge {
+  font-size: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Navigation updates */
+.navbar-nav .nav-item {
+  margin: 0 0.25rem;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .site-header .hero {
+    min-height: 60vh;
+    padding: 80px 0;
+  }
+  
+  .hero-profile-photo {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .hero .lead {
+    font-size: 1.4rem;
+  }
+  
+  .hero .lead strong {
+    font-size: 1.8rem;
+  }
+  
+  .hero-title-line {
+    font-size: 1.4rem;
+  }
+  
+  .section-padding {
+    padding: 60px 0;
+  }
+  
+  .about-section,
+  .portfolio-section,
+  .skills-section,
+  .education-section,
+  .contact-section {
+    padding: 2rem;
+    margin: 1rem 0;
+  }
+  
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .site-header .hero {
+    min-height: 55vh;
+    padding: 60px 0;
+  }
+  
+  .hero-profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .hero .lead {
+    font-size: 1.2rem;
+  }
+  
+  .hero .lead strong {
+    font-size: 1.5rem;
+  }
+  
+  .hero-title-line {
+    font-size: 1.2rem;
+  }
+}
